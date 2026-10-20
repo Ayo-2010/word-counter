@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Word Counter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,900&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="masthead">
+  <p class="kicker">The Text Desk</p>
+  <h1>Word Counter</h1>
+  <p class="tagline">Paste or type your copy and every figure on the page updates as you work.</p>
+</header>
+
+<main class="layout">
+  <section class="desk" aria-label="Editor">
+    <label class="field-label" for="input">Manuscript</label>
+    <textarea id="input" spellcheck="false" placeholder="Start typing or paste your text here&hellip;"></textarea>
+
+    <div class="meter-track" aria-hidden="true"><div class="meter-fill" id="meter"></div></div>
+
+    <div class="limit-row">
+      <label class="field-label" for="limit">Character limit</label>
+      <input id="limit" type="number" min="0" step="100" value="5000" inputmode="numeric">
+      <span class="limit-note" id="limitNote">0 / 5000</span>
+    </div>
+
+    <div class="actions">
+      <button id="clearBtn" class="btn btn-ghost" type="button">Clear</button>
+      <button id="copyBtn" class="btn" type="button">Copy text</button>
+      <button id="sampleBtn" class="btn btn-ghost" type="button">Load sample</button>
+      <span class="flash" id="flash" role="status" aria-live="polite"></span>
+    </div>
+
+    <p class="hint">Shortcut: press <kbd>Ctrl</kbd> + <kbd>Enter</kbd> (or <kbd>&#8984;</kbd> + <kbd>Enter</kbd>) to copy the text.</p>
+  </section>
+
+  <section class="board" aria-label="Statistics">
+    <div class="stat"><span class="stat-label">Words</span><span class="stat-value" id="words">0</span></div>
+    <div class="stat"><span class="stat-label">Characters</span><span class="stat-value" id="chars">0</span></div>
+    <div class="stat"><span class="stat-label">No spaces</span><span class="stat-value" id="charsNoSpaces">0</span></div>
+    <div class="stat"><span class="stat-label">Sentences</span><span class="stat-value" id="sentences">0</span></div>
+    <div class="stat"><span class="stat-label">Paragraphs</span><span class="stat-value" id="paragraphs">0</span></div>
+    <div class="stat"><span class="stat-label">Unique words</span><span class="stat-value" id="unique">0</span></div>
+    <div class="stat stat-wide"><span class="stat-label">Longest word</span><span class="stat-value stat-word" id="longest">&mdash;</span></div>
+    <div class="stat"><span class="stat-label">Avg length</span><span class="stat-value" id="avgLength">0</span></div>
+    <div class="stat stat-accent"><span class="stat-label">Reading time</span><span class="stat-value" id="reading">0:00</span></div>
+  </section>
+
+  <section class="panel" aria-label="Word frequency">
+    <h2>Most used words</h2>
+    <p class="panel-note">Common stop words are left out of this list.</p>
+    <div id="frequency" class="frequency"></div>
+  </section>
+</main>
+
+<footer class="footer">Nothing leaves your browser. Everything is counted locally.</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
